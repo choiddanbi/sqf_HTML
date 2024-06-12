@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes move {
+            0% {
+                left: 0px;
+            }
+
+            25% {
+                top: 100px;
+            }
+
+            50% {
+                left: 100px;
+            }
+
+            75% {
+                top: 200px;
+            }
+
+            100% {
+                left: 300px;
+                top: 300px;
+            }
+
+        }
+
+        .box {
+            position: absolute;
+            border: 1px solid black;
+            width: 200px;
+            height: 200px;
+            animation-name: move;
+            animation-timing-function: ease-in-out;
+            animation-duration: 2s;
+            animation-direction: alternate; /*제자리로 원복*/
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+        }
+
+        .box:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

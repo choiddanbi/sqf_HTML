@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box0 {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-content: center;
+            box-sizing: border-box;
+            flex-wrap: nowrap;
+            border: 1px solid black;
+            width: 100%;
+            height: 1000px;
+        }
+
+        .box1 {
+            box-sizing: border-box;
+            width: 700px;
+            height: 900px;
+            flex-direction: row;
+            border: 1px solid black;
+            justify-content: space-between;
+            margin: 20px;
+        }
+
+        .mbox {
+            display: flex;
+            box-sizing: border-box;
+            border: 1px solid black;
+            height: 40%;
+            margin: 20px;
+        }
+
+        .small1{
+            box-sizing: border-box;
+            width: 100px;
+            height: 100px;
+            flex-direction: row;
+            align-content: space-between;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="box0">
+        <div class="box1">
+            <div class="mbox">
+                <div class="small1">1</div>
+                <div class="small1">2</div>
+                <div class="small1">3</div>
+                <div class="small1">4</div>
+            </div>
+            <div class="mbox">
+                <div></div>
+            </div>
+        </div>
+
+        <div class="box1">
+            <div class="mbox">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div class="mbox">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

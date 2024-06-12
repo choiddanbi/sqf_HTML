@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main > h1 + div > h1 { /*인접형제*/
+            color: aquamarine; 
+        }
+
+        main > h1 ~ div > h1 { /*형제*/
+            color: blueviolet;
+        } 
+    </style>
+</head>
+<body>
+    <main>
+        <h1>제목1</h1>
+        <!-- <p>test</p> 이거 인접형제에서는 이거 있으면 안되는데 ㅇ형제에서는 이거 있어도 됨-->
+        <div>
+            <h1>제목2</h1>
+        </div>
+        <div>
+            <h1>제목3</h1>
+        </div>
+    </main>
+</body>
+</html>
