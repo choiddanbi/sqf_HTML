@@ -5,73 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .box0 {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-content: center;
+        div {
             box-sizing: border-box;
-            flex-wrap: nowrap;
             border: 1px solid black;
+        }
+
+        .container { /*젤 큰 박스 1개*/
+            display: flex;
+            justify-content: center; /*item(자식)을 주축(왼->오) 기준으로 배치*/
+            align-items: center; /*item(자식)을 교차축 기준으로 배치*/
             width: 100%;
             height: 1000px;
         }
 
-        .box1 {
-            box-sizing: border-box;
+        .sub-container { /*다음 큰 박스 2개*/
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /*item(자식)을 주축(위->아래) 기준으로 배치*/
+            margin: 0px 20px;
+            padding: 20px;
             width: 700px;
             height: 900px;
-            flex-direction: row;
-            border: 1px solid black;
-            justify-content: space-between;
-            margin: 20px;
         }
 
-        .mbox {
+        .p-box { /*중간 박스 4개 전체*/
             display: flex;
-            box-sizing: border-box;
-            border: 1px solid black;
+            width: 100%;
             height: 40%;
-            margin: 20px;
         }
 
-        .small1{
-            box-sizing: border-box;
+        .box1 { /*중간 박스1 -> 작은 박스들을 두개씩 묶음*/
+            flex-direction: column;
+            justify-content: space-between; /*item(자식)을 주축(위->아래) 기준으로 배치 - 양쪽 끝으로 !! */
+        }
+
+        .box2 {
+            justify-content: center; /*item(자식)을 주축(왼->오) 기준으로 배치*/
+            align-items: center; /*item(자식)을 교차축 기준으로 배치*/
+        }
+
+        .box3 {
+            flex-direction: column;
+            justify-content: flex-start; /*item(자식)을 주축(위->아래) 기준으로 배치 - 왼쪽 정렬*/
+        }
+
+        .box4 {
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .p-sub-box {
+            display: flex;
+            justify-content: space-between;
+            border: none;
+        }
+
+        .mini-box {
             width: 100px;
             height: 100px;
-            flex-direction: row;
-            align-content: space-between;
-            border: 1px solid black;
         }
     </style>
 </head>
 <body>
-    <div class="box0">
-        <div class="box1">
-            <div class="mbox">
-                <div class="small1">1</div>
-                <div class="small1">2</div>
-                <div class="small1">3</div>
-                <div class="small1">4</div>
+    <div class="container">
+        <div class="sub-container">
+            <div class="p-box box1">
+                <div class="p-sub-box">
+                    <div class="mini-box"></div>
+                    <div class="mini-box"></div>
+                </div>
+                <div class="p-sub-box">
+                    <div class="mini-box"></div>
+                    <div class="mini-box"></div>
+                </div>
             </div>
-            <div class="mbox">
-                <div></div>
+            <div class="p-box box2">
+                <div class="mini-box"></div>
             </div>
         </div>
-
-        <div class="box1">
-            <div class="mbox">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+        <div class="sub-container">
+            <div class="p-box box3">
+                <div class="p-sub-box">
+                    <div class="mini-box"></div>
+                    <div class="mini-box"></div>
+                    <div class="mini-box"></div>
+                </div>
+                <div class="p-sub-box">
+                    <div class="mini-box"></div>
+                    <div class="mini-box"></div>
+                    <div class="mini-box"></div>
+                </div>
             </div>
-            <div class="mbox">
-                <div></div>
-                <div></div>
-                <div></div>
+            <div class="p-box box4">
+                <div class="mini-box"></div>
+                <div class="mini-box"></div>
+                <div class="mini-box"></div>
             </div>
         </div>
     </div>

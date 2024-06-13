@@ -1,0 +1,22 @@
+/*초기 설정 style들 작성*/
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+body, h1, ul, oi, button {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    cursor: pointer;
+}
