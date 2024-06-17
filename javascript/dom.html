@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-box">
+        <div id="input1">
+            <input type="text">
+        </div>
+        <div id="input2">
+            <input type="text">
+        </div>
+    </div>
+    <div>
+        <button onclick="handleButtonClick(event);">확인</button>
+    </div>
+
+    <script> // 문서 객체 가져오기 예제
+    // 방법 1) mainBox 가져오기
+        // const body = document.getElementsByTagName(body)[0]; // 배열로 가져옴.. 그래서 인덱스 표기 필수로 해줘야함 !! > body 하나니까 맨 처음꺼 가져옴~ 로도 가능
+        const bodyList = document.getElementsByTagName("body"); 
+        const body = bodyList[0];
+        const mainBox = document.getElementsByTagName("div");
+        const mainBoxList = body.getElementsByClassName("main-box"); // class인데 .안해 >> 선택자로 들고오는게 아니ㅣ니가!! > List 임
+        const input1 = mainBoxList[0]
+                        .getElementsByTagName("div")[0]
+                        .getElementsByTagName("input")[0];
+        const input1_1 = document.getElementsByTagName("input")[0]; // 도 동일!
+        const input1_1_1 = document.getElementById("input1").getElementsByTagName("input")[0]; // 도 동일
+        //const [ input1_1_1 ] = document.getElementsById("input1").getElementsByTagName("input")[0]; // 도 동일 비구조할당으로
+    
+
+
+        console.log(bodyList);
+        console.log({body}); // body변수가 키와 값
+        //console.log(body);
+        console.log({mainBox: mainBox[0]}); // {} 하면 객체가 된다
+        //console.log(divList);
+        console.log({mainBox: mainBoxList[0]});
+        //console.log(mainBoxList);
+        //console.log(input1);
+        console.log({input1: input1});
+        console.log(input1_1_1);
+
+        
+        /////////////////////QuerySelector ////////////////////////
+        const input1_1_1_1 = document.querySelector("body #input1 > input"); // 선택자로
+        console.log(input1_1_1_1);
+        const inputList = document.querySelectorAll("input");
+        console.log(inputList);
+        const input1_1_1_1_1 = document.querySelector("input"); // 이건 첫번짺꺼 가져오겠따
+        console.log(input1_1_1_1_1);
+
+        // 방법1. 객체 가져와서 set으로 수정 !
+        const button = document.querySelector("button");// button 객체 가져오기
+        console.log(button.getAttribute("onclick")); // 속성의 값을 문자열로 반환 // handleButtonClick(event);
+        console.log(button.setAttribute("onclick", "alert('test');")); // 수정 > onclick 속성을 alert('test') 로 바꿔라...
+        //console.log({button});
+        //console.log(button.onclick); 
+    
+
+        /* 방법2
+        setter 쓸 필요 없이 바로 아래처럼 사용 가능
+        버튼 객체 자체를 그냥 가져와서 .onclick 속성을 바로 넣을 수 있음.
+        button.onclick = () => {
+             alert("test2");
+         }
+        */
+
+
+        // 방법1
+        button.onclick = (e) => {
+            console.log(e);
+            const [ input_1, input_2 ] = document.querySelectorAll("input");
+            alert(`name: ${input_1.value}\n age: ${input_2.value}`);  // \ 이스케이프 문자. '\n' <- 줄바꿈 
+        }
+
+        /* 방법2
+        button.onclick = handleButtonClick();
+        function handleButtonClick(e) {
+           console.log(e);
+           const [ input_1, input_2 ] = document.querySelectorAll("input");
+           alert(`name: ${input_1.value}\n age: ${input_2.value}`);
+         }
+        */
+
+        console.log(button.onclick);
+    </script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main-box">
+
+    </div>
+
+
+    <script>
+        // innerHTML vs createElement
+        const addText = document.createTextNode("추가"); // text노드 추가하기
+        const addButton = document.createElement("button"); // button요소 추가하기_빈button // .createElement 이용
+        addButton.appendChild(addText); // appendChild(자식요소) : 부모 노드의 자식 노드 리스트 중 마지막 자식으로 추가
+
+        const mainBox = document.querySelector(".main-box");
+        mainBox.appendChild(addButton); // 추가 버튼 생성됨!
+
+        mainBox.innerHTML += `<button>추가2</button>`;
+        console.log(mainBox); // 추가2 버튼도 생성됨! // .innerHTML 이용
+        
+        console.log(mainBox.querySelector("button").parentNode); // parentNode 부모 노드 중 모든 노드를 반환한다. >> 추가2 ㅠㅠ
+        mainBox.removeChild(mainBox.querySelector("button")); // 추가 버튼 삭제됨 .. 추가2 가 부모고 추가는 자식이야? 왜때문에ㅔ ???????????
+
+    </script>
+</body>
+</html>

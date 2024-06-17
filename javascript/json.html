@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // JSON(JavaScript Object Notation) 데이터 전송 표준 객체
+        // 얘는 자바스크립트 객체!!
+        const user = {
+            username: "aaa",
+            passworkd: "1234",
+            name: "김준일",
+        }
+
+        // user객체 -> json문자열
+        const jsonUser = JSON.stringify(user);
+        // json문자열 -> 객체로
+        const jsonPareUser = JSON.parse(jsonUser);
+
+        console.log(user);
+        console.log(jsonUser);
+        console.log(jsonPareUser);
+
+
+
+        console.log(user.username); // 가능
+        //console.log(jsonUer.username); //불가능
+        console.log(jsonPareUser.username); // 가능
+
+        
+        const users = [ user, {...user, username: "bbb"}];
+        console.log(users);
+        const jsonUsers = JSON.stringify(users); // List배열 -> json문자열
+        console.log(jsonUsers);
+        const jsonPareUsers = JSON.parse(jsonUsers); // json 문자열 -> List 배열
+        console.log(jsonPareUser);
+    
+
+        /* JSON 문법 ? 형태 ?? : JSON 은 문자열이다! > 문자열이기 때문에 참조 못함!
+        // 객체 <-> JSON 바꿀 수 있어야함
+        "{
+            "key": "value" // 숫자면 value , 문자열이면 "value" 
+            "key2": value2
+        }"
+        */
+    </script>
+</body>
+</html>
