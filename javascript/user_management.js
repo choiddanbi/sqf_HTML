@@ -30,7 +30,7 @@ function renderTable() {
     userTableBody.innerHTML = userList.map(({id, name, username, password}, index) => { // userList 에서 user 하나씩 꺼냄, map (배열의 요ㅗ소들을 콜백함수?ㅇ를 적용해서 새로운 배열로 반환) // 배열을 반복 돌려라
         return `
             <tr>
-                <th><input type = "checkbox" onchange="handleUsercheck(event)"></th>
+                <th><input type = "checkbox" onchange="handleUsercheck(event)" value="${id}"></th>
                 <td>${index + 1}</td>
                 <td>${id}</td>
                 <td>${name}</td>
@@ -67,14 +67,29 @@ function handleUserInputKeyDown(e) {
         }
 
         if(e.target.name === "password") {
-            userList = [ ...userList, { ...user, id: getNewId() } ];
+            if(inputMode === 1) {
+                userList = [ ...userList, { ...user, id: getNewId() } ];
+            }
 
+            if(inputMode === 2) {
+                let findIndex = -1;
+                for ( let i = 0; i < userList.length; i++) {
+                    if(userList[i].id === user.id) { // 인덱스 값 찾기..
+                        findIndex = i;
+                        break;
+                    }
+                }
+                if(findIndex === -1) {
+                    alert("사용자 정보 수정 중 오류 발생, 관리자에게 문의하세요.");
+                    return;
+                }
+                //console.log(user);
+                userList[findIndex] = user;
+            }
+           
             saveUserList();
             renderTable();
-
-            nameInput.value = emptyUser.name;
-            usernameInput.value = emptyUser.username;
-            passwordInput.value = emptyUser.password;
+            clearInputValue();
 
             nameInput.focus();
         }
@@ -115,7 +130,56 @@ function getNewId() {
     return maxUserId + 1;
 }
 
-function handleUsercheck(e) {
+/*function handleUsercheck(e) {
     // console.log(e.target.checked);
     e.target.checked = true;
+}*/
+
+
+function handleUsercheck(e) {
+    const checkBoxList = document.querySelectorAll("input[type='checkbox']");
+    //console.log(checkBoxList);
+    for(let checkBox of checkBoxList) { //for-each
+        if(checkBox === e.target) {
+            continue; 
+            }
+        checkBox.checked = false;
+    }
+
+    if(e.target.checked) {
+        inputMode = 2; // 수정
+        const [findUser] = userList.filter(user => user.id === parseInt(e.target.value));
+        setInputValue(findUser);
+        user = {
+            ...findUser
+        }
+        return;
+    }
+    clearInputValue();
+}
+
+function setInputValue(user) {
+    const nameInput = document.querySelector(".name-input");
+    const usernameInput = document.querySelector(".username-input");
+    const passwordInput = document.querySelector(".password-input");
+ 
+    nameInput.value = user.name;
+    usernameInput.value = user.username;
+    passwordInput.value = user.password;
+ }
+
+
+function clearInputValue() {
+    const nameInput = document.querySelector(".name-input");
+    const usernameInput = document.querySelector(".username-input");
+    const passwordInput = document.querySelector(".password-input");
+    nameInput.value = emptyUser.name;
+    usernameInput.value = emptyUser.username;
+    passwordInput.value = emptyUser.password;
+
+    inputMode = 1;
+    user = {
+        ...emptyUser
+    }
+
 }
